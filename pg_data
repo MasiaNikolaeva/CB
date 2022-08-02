@@ -40,11 +40,19 @@ CREATE TABLE phonedata.cbusers (
     phone character varying(20),
     mobilephone character varying(20),
     "e-mail" character varying(256),
-    birthday date NOT NULL
+    birthday date NOT NULL,
+    updatetime timestamp without time zone DEFAULT now()
 );
 
 
 ALTER TABLE phonedata.cbusers OWNER TO "SuperAdmin";
+
+--
+-- Name: COLUMN cbusers.updatetime; Type: COMMENT; Schema: phonedata; Owner: SuperAdmin
+--
+
+COMMENT ON COLUMN phonedata.cbusers.updatetime IS 'time of record insertion';
+
 
 --
 -- Name: cbusers_id_seq; Type: SEQUENCE; Schema: phonedata; Owner: SuperAdmin
@@ -121,12 +129,12 @@ ALTER TABLE ONLY phonedata.workplace ALTER COLUMN id SET DEFAULT nextval('phoned
 -- Data for Name: cbusers; Type: TABLE DATA; Schema: phonedata; Owner: SuperAdmin
 --
 
-COPY phonedata.cbusers (id, lastname, name, phone, mobilephone, "e-mail", birthday) FROM stdin;
-1	Иванов	Артем	84995031213	89261182345	ivart@mail.ru	1968-01-18
-2	Смирнов	Егор	84991054321	89131054265	egors@yandex.ru	1978-05-11
-3	Кожанов	Алексей	84951086782	89269012348	lexak@mail.ru	2000-04-03
-4	Сидоров	Андрей	84954784392	89161074513	sidorovand@yandex.ru	1995-12-28
-5	Егоров	Олег	84991418216	89255431900	egoroleg@mail.ru	1999-06-13
+COPY phonedata.cbusers (id, lastname, name, phone, mobilephone, "e-mail", birthday, updatetime) FROM stdin;
+1	Иванов	Артем	84995031213	89261182345	ivart@mail.ru	1968-01-18	2022-08-02 17:34:49.009415
+2	Смирнов	Егор	84991054321	89131054265	egors@yandex.ru	1978-05-11	2022-08-02 17:34:49.009415
+3	Кожанов	Алексей	84951086782	89269012348	lexak@mail.ru	2000-04-03	2022-08-02 17:34:49.009415
+4	Сидоров	Андрей	84954784392	89161074513	sidorovand@yandex.ru	1995-12-28	2022-08-02 17:34:49.009415
+5	Егоров	Олег	84991418216	89255431900	egoroleg@mail.ru	1999-06-13	2022-08-02 17:34:49.009415
 \.
 
 
